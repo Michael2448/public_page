@@ -1,0 +1,442 @@
+
+                        <!DOCTYPE html>
+                        <html lang="en">
+                        <head>
+                            <meta charset="UTF-8">
+                            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+							<style>
+								body {
+									background-color: white; /* Ensure the iframe has a white background */
+								}
+
+								
+							</style>
+                        </head>
+                        <body>
+                            <!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Обзор акции — макет v2</title>
+  <style>
+    :root {
+      --bg:#f4f6fa; --panel:#fff; --ink:#172235; --muted:#68768d;
+      --line:#e3e8f0; --blue:#315cf5; --blue-light:#edf1ff;
+      --green:#147d62; --green-light:#e8f6f1; --amber:#96600e;
+      --amber-light:#fff4dc; --shadow:0 5px 24px rgba(22,34,62,.035);
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--ink)}
+    .wrap{max-width:1400px;margin:auto;padding:24px 28px 52px}
+    header{display:flex;justify-content:space-between;align-items:flex-start;gap:18px;margin-bottom:22px}
+    h1{font-size:27px;letter-spacing:-.04em;margin:4px 0}
+    h2{font-size:17px;letter-spacing:-.025em;margin:0}
+    p{margin:0}
+    .eyebrow{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);font-weight:800}
+    .sub,.hint{font-size:12px;line-height:1.5;color:var(--muted)}
+    .demo{font-size:10px;font-weight:800;letter-spacing:.04em;background:#e7ecf8;color:#53647f;padding:8px 11px;border-radius:999px;white-space:nowrap}
+    .tabs{display:flex;gap:8px;border-bottom:1px solid var(--line);margin-bottom:19px;overflow:auto}
+    .tab{white-space:nowrap;padding:11px 14px;color:var(--muted);font-size:12px;font-weight:700}
+    .tab.active{color:var(--blue);border-bottom:3px solid var(--blue)}
+    .tab.future{opacity:.5}
+    .panel{background:var(--panel);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow)}
+    .filters{padding:17px 18px;margin-bottom:13px}
+    .filter-grid{display:grid;grid-template-columns:1.3fr 1fr .85fr .9fr;gap:12px}
+    label{display:block;font-size:10px;font-weight:750;color:var(--muted)}
+    select{display:block;width:100%;margin-top:6px;padding:10px;border:1px solid #d8dfeb;border-radius:8px;background:#fff;color:var(--ink);font:inherit;font-size:12px}
+    .filter-note{margin-top:11px}
+    .status{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 19px}
+    .pill{font-size:10px;font-weight:700;color:#4d5b73;background:#fff;border:1px solid var(--line);border-radius:999px;padding:7px 9px}
+    .pill.warn{background:var(--amber-light);border-color:#f1d89e;color:var(--amber)}
+    .section{margin-top:24px}
+    .section-head{display:flex;justify-content:space-between;align-items:flex-end;gap:15px;margin-bottom:11px}
+    .section-head .sub{margin-top:4px}
+    .kpis{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+    .kpi{padding:16px;min-height:172px}
+    .kpi.primary{background:#fafbff;border-color:#c6d1ff}
+    .label{font-size:10px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#63718a}
+    .kpi.primary .label{color:var(--blue)}
+    .title{font-size:12px;font-weight:730;line-height:1.4;margin:10px 0 9px;min-height:34px}
+    .value{font-size:23px;line-height:1.15;font-weight:830;letter-spacing:-.035em;font-variant-numeric:tabular-nums}
+    .unit{font-size:10px;color:var(--muted);font-weight:650;letter-spacing:0}
+    .compare{font-size:10px;color:var(--muted);margin-top:7px}
+    .badge{display:inline-block;font-size:9px;font-weight:800;border-radius:5px;padding:4px 6px;background:var(--amber-light);color:var(--amber);vertical-align:middle;margin-left:4px}
+    .delta{display:inline-block;margin-top:11px;padding:5px 7px;border-radius:6px;background:#edf1f6;color:#59677e;font-size:10px;font-weight:800}
+    .delta.up{background:var(--green-light);color:var(--green)}
+    .explain{margin-top:8px;font-size:10px;line-height:1.45;color:var(--muted)}
+    .two{display:grid;grid-template-columns:1.14fr .86fr;gap:12px}
+    .box{padding:17px 18px}
+    .box-title{font-size:13px;font-weight:760}
+    .box-sub{font-size:10px;line-height:1.45;color:var(--muted);margin-top:4px}
+    svg{display:block;width:100%}
+    .daily{height:280px;margin-top:12px}
+    .gridline{stroke:#e9edf4;stroke-width:1}
+    .axis{fill:#758198;font-size:9px}
+    .bar-vds{fill:#7892f8}
+    .line-new{fill:none;stroke:#ec9b43;stroke-width:2.7}
+    .dot-new{fill:#ec9b43}
+    .legend{display:flex;flex-wrap:wrap;gap:13px;margin-top:4px;color:var(--muted);font-size:10px}
+    .legmark{display:inline-block;width:10px;height:10px;margin-right:5px;vertical-align:-1px;border-radius:2px}
+    .compare-list{display:flex;flex-wrap:wrap;gap:7px;margin:12px 0 13px}
+    .chip{border:1px solid var(--line);border-radius:999px;padding:6px 9px;color:#56647b;background:#fff;font-size:10px;font-weight:700}
+    .chip.selected{background:var(--blue-light);border-color:#cbd5ff;color:var(--blue)}
+    .share-chart{height:177px;margin-top:8px}
+    .table{width:100%;border-collapse:collapse;margin-top:9px;font-size:10px}
+    .table th,.table td{padding:9px 6px;border-bottom:1px solid #edf0f5;text-align:right;font-variant-numeric:tabular-nums}
+    .table th:first-child,.table td:first-child{text-align:left}
+    .table th{color:var(--muted);font-size:9px}
+    .table tr:last-child td{border-bottom:0}
+    .mini-stat{margin-top:12px;padding:10px;background:#f6f8fb;border-radius:8px;color:#536178;font-size:10px;line-height:1.5}
+    .definition{margin-top:22px;padding:16px 18px;background:#edf1f7;border:1px solid #dfe6f0;border-radius:13px}
+    .definition h2{font-size:12px;margin-bottom:9px}
+    .defs{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .def{font-size:10px;color:#526078;line-height:1.5}
+    .def strong{display:block;color:#31405b;margin-bottom:3px}
+    @media(max-width:1000px){.kpis{grid-template-columns:repeat(3,1fr)}.two{grid-template-columns:1fr}}
+    @media(max-width:650px){.wrap{padding:17px 12px 40px}header{display:block}.demo{display:inline-block;margin-top:9px}.filter-grid{grid-template-columns:1fr 1fr}.kpis{grid-template-columns:1fr 1fr}.defs{grid-template-columns:1fr}.box{overflow:hidden}}
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div>
+      <div class="eyebrow">Маркетинговая аналитика · макет для обсуждения</div>
+      <h1>Обзор акции</h1>
+      <p class="sub">Мониторинг текущей акции и итоги по завершённой</p>
+    </div>
+    <div class="demo">ДЕМОНСТРАЦИОННЫЕ ДАННЫЕ</div>
+  </header>
+
+  <nav class="tabs">
+    <div class="tab active">01 · Обзор</div>
+    <div class="tab future">02 · Привлечение и каналы</div>
+    <div class="tab future">03 · Состав продаж</div>
+    <div class="tab future">04 · Удержание и деньги</div>
+    <div class="tab future">05 · Спрос вокруг акции</div>
+  </nav>
+
+  <section class="panel filters">
+    <div class="filter-grid">
+      <label>Акция
+        <select id="promo"></select>
+      </label>
+      <label>Период акции
+        <select id="dateMode">
+          <option value="promo">Даты выбранной акции</option>
+          <option value="all">Выбрать период вручную</option>
+        </select>
+      </label>
+      <label>Сравнить долю новых с
+        <select id="compareMode">
+          <option value="selected">Выбранными акциями</option>
+          <option value="season">Акциями того же сезона</option>
+        </select>
+      </label>
+      <label>Горизонт SLTV
+        <select id="horizon">
+          <option value="180">180 дней</option>
+        </select>
+      </label>
+    </div>
+    <p class="hint filter-note">
+      Сравнение доли новых предлагается сделать выборочным: отметить одну или несколько акций,
+      без автоматического назначения референса «прошлый год». Горизонт SLTV фиксирован для
+      сопоставимости и в этом макете равен 180 дням.
+    </p>
+  </section>
+
+  <div class="status" id="status"></div>
+
+  <section class="section">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Ключевые показатели</div>
+        <h2>Пять KPI акции</h2>
+        <p class="sub">Денежный факт и прогноз отделены; показатели можно читать как итоги или как текущий прогресс.</p>
+      </div>
+    </div>
+    <div class="kpis" id="kpis"></div>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Мониторинг акции</div>
+        <h2>Что происходило по дням?</h2>
+        <p class="sub">VDS и новые клиенты показаны раздельными сериями; регистрации не приравниваются к новым клиентам.</p>
+      </div>
+    </div>
+    <div class="two">
+      <div class="panel box">
+        <div class="box-title">Проданные VDS и новые клиенты</div>
+        <p class="box-sub">Столбцы — проданные VDS за день. Линия — новые клиенты с покупкой VDS за день.</p>
+        <svg id="dailyChart" class="daily" aria-label="Дневная динамика продаж VDS и новых клиентов"></svg>
+        <div class="legend">
+          <span><i class="legmark" style="background:#7892f8"></i>Проданные VDS</span>
+          <span><i class="legmark" style="background:#ec9b43;border-radius:50%"></i>Новые клиенты</span>
+        </div>
+      </div>
+
+      <div class="panel box">
+        <div class="box-title">Доля новых клиентов</div>
+        <p class="box-sub">Рабочее предложение: новые платящие клиенты среди всех клиентов, купивших VDS по условиям акции.</p>
+        <div class="compare-list" id="compareList"></div>
+        <svg id="shareChart" class="share-chart" aria-label="Сравнение долей новых клиентов"></svg>
+        <table class="table">
+          <thead><tr><th>Акция</th><th>Новые / все клиенты</th><th>Доля новых</th></tr></thead>
+          <tbody id="shareTable"></tbody>
+        </table>
+        <div class="mini-stat">
+          Регистрации во время акции — отдельное событие и не используются автоматически
+          как определение нового клиента. Финальное определение обсуждается.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Расшифровка долгосрочной ценности</div>
+        <h2>SLTV: факт и прогноз до 180-го дня</h2>
+        <p class="sub">Предлагаемый стартовый горизонт — 180 дней жизни каждого сервера после покупки.</p>
+      </div>
+    </div>
+    <div class="panel box">
+      <div class="box-title">Почему SLTV ещё может измениться?</div>
+      <p class="box-sub">
+        Когорты с неполными 180 днями показывают накопленный признанный доход по факту
+        и прогноз оставшегося горизонта. Для зрелой когорты весь показатель становится фактическим.
+      </p>
+      <div class="mini-stat" id="sltvNote"></div>
+    </div>
+  </section>
+
+  <section class="definition">
+    <h2>Определения и ограничения — для согласования</h2>
+    <div class="defs">
+      <div class="def"><strong>Платежи</strong>
+        Сумма денег, внесённых при покупке серверов, отнесённых к акции.
+        В текущем макете возвраты не вычитаются.
+      </div>
+      <div class="def"><strong>Новые клиенты</strong>
+        В макете временно показаны клиенты с первой платящей покупкой в компании.
+        Регистрация в период акции отображается отдельно, если это потребуется.
+      </div>
+      <div class="def"><strong>SLTV, 180 дней</strong>
+        Признанный доход по серверам когорты за первые 180 дней после покупки:
+        факт до даты расчёта + прогноз остатка. Учитывает скидку и продления;
+        точный метод прогноза нужно проверить на исторических когортах.
+      </div>
+    </div>
+  </section>
+</div>
+
+<script>
+  // Условные данные для демонстрации структуры интерфейса.
+  const data = [
+    {id:"summer26", name:"Лето · 2026", dates:"8–14 июня", duration:7,
+     elapsed:4, vds:68, newClients:39, mrr:286000, payments:714000,
+     sltvFact:492000, sltvForecast:184000, sltvLow:150000, sltvHigh:220000,
+     allBuyers:53, registrations:84, dailyVds:[7,9,8,12,11,10,11],
+     dailyNew:[4,5,4,7,6,6,7]},
+    {id:"summer25", name:"Лето · 2025", dates:"9–22 июня", duration:14,
+     elapsed:14, vds:157, newClients:81, mrr:612000, payments:1680000,
+     sltvFact:1240000, sltvForecast:0, sltvLow:0, sltvHigh:0,
+     allBuyers:128, registrations:174},
+    {id:"spring26", name:"Весна · 2026", dates:"13–26 апреля", duration:14,
+     elapsed:14, vds:164, newClients:92, mrr:681000, payments:1890000,
+     sltvFact:1490000, sltvForecast:0, sltvLow:0, sltvHigh:0,
+     allBuyers:137, registrations:192},
+    {id:"spring25", name:"Весна · 2025", dates:"7–13 апреля", duration:7,
+     elapsed:7, vds:61, newClients:34, mrr:229000, payments:625000,
+     sltvFact:470000, sltvForecast:0, sltvLow:0, sltvHigh:0,
+     allBuyers:49, registrations:73}
+  ];
+
+  const $ = id => document.getElementById(id);
+  const fmt = n => Number(n).toLocaleString("ru-RU");
+  const shortMoney = n => (n/1000).toLocaleString("ru-RU",
+    {maximumFractionDigits:0}) + " тыс. ₽";
+  const pct = n => (n*100).toLocaleString("ru-RU",
+    {maximumFractionDigits:1}) + "%";
+  const share = p => p.newClients / p.allBuyers;
+  const byId = id => data.find(p => p.id === id);
+  const svg = (tag,attrs,text) => {
+    const el=document.createElementNS("http://www.w3.org/2000/svg",tag);
+    Object.entries(attrs).forEach(([k,v])=>el.setAttribute(k,v));
+    if(text!==undefined) el.textContent=text;
+    return el;
+  };
+
+  $("promo").innerHTML = data.map(p =>
+    `<option value="${p.id}">${p.name}</option>`).join("");
+  $("promo").value = "summer26";
+
+  function renderStatus(p) {
+    const active = p.elapsed < p.duration;
+    const mature = p.elapsed >= 180;
+    $("status").innerHTML = `
+      <span class="pill">${p.name} · ${p.dates} · ${p.duration} дней</span>
+      <span class="pill ${active?"warn":""}">${active?"Акция идёт":"Акция завершена"}</span>
+      <span class="pill ${mature?"":"warn"}">SLTV 180 дней: ${mature?"факт":"факт + прогноз"}</span>
+      <span class="pill">Данные обновлены: сегодня · демонстрация</span>`;
+  }
+
+  function renderKpis(p) {
+    const daily = p.dailyVds || Array.from({length:p.duration},(_,i)=>
+      Math.round(p.vds/p.duration + (i%3)-1));
+    const totalVds = p.elapsed < p.duration
+      ? daily.slice(0,p.elapsed).reduce((a,b)=>a+b,0) : p.vds;
+    const currentNew = p.elapsed < p.duration
+      ? Math.round(p.newClients*p.elapsed/p.duration) : p.newClients;
+    const clients = p.elapsed < p.duration
+      ? Math.round(p.allBuyers*p.elapsed/p.duration) : p.allBuyers;
+    const vdsPerDay = totalVds / Math.max(1,Math.min(p.elapsed,p.duration));
+    const newPerDay = currentNew / Math.max(1,Math.min(p.elapsed,p.duration));
+    const sltvTotal = p.sltvFact+p.sltvForecast;
+    const sltvPerDay = sltvTotal/p.duration;
+    const items = [
+      {label:"Деньги сейчас",title:"Платежи по акции",
+       value:shortMoney(p.payments),unit:"внесено, ₽",
+       desc:"Денежные средства при покупке VDS; возвраты пока не вычитаются."},
+      {label:"Продажи",title:"Проданные VDS",
+       value:fmt(totalVds),unit:"серверов",
+       desc:`Темп: ${vdsPerDay.toLocaleString("ru-RU",{maximumFractionDigits:1})} VDS в день акции.`},
+      {label:"Потенциал",title:"MRR продаж акции",
+       value:shortMoney(p.mrr),unit:"₽/мес. по цене продления",
+       desc:"MRR связанных с акцией VDS; не равен полученным платежам."},
+      {label:"Привлечение",title:"Новые клиенты",
+       value:fmt(currentNew),unit:"клиентов",
+       desc:`Темп: ${newPerDay.toLocaleString("ru-RU",{maximumFractionDigits:1})} новых клиентов в день акции.`},
+      {label:"Долгосрочный результат",title:"SLTV · горизонт 180 дней",
+       value:shortMoney(sltvTotal),unit:"признанного дохода",
+       forecast:p.sltvForecast>0,
+       desc:`Факт ${shortMoney(p.sltvFact)} + прогноз ${shortMoney(p.sltvForecast)}; ${shortMoney(sltvPerDay)} на день акции.`}
+    ];
+    $("kpis").innerHTML = items.map((x,i)=>`
+      <div class="panel kpi ${i===4?"primary":""}">
+        <div class="label">${x.label}</div>
+        <div class="title">${x.title}</div>
+        <div class="value">${x.value}${x.forecast?'<span class="badge">ПРОГНОЗ</span>':""}</div>
+        <div class="unit">${x.unit}</div>
+        <div class="explain">${x.desc}</div>
+      </div>`).join("");
+  }
+
+  function renderDaily(p) {
+    const svgEl=$("dailyChart");
+    svgEl.replaceChildren();
+    svgEl.setAttribute("viewBox","0 0 650 280");
+    const vals=p.dailyVds || Array.from({length:p.duration},(_,i)=>
+      Math.max(1,Math.round(p.vds/p.duration+(i%4)-1)));
+    const news=p.dailyNew || vals.map((_,i)=>
+      Math.max(0,Math.round(p.newClients/p.duration+(i%3)-1)));
+    const n=p.elapsed<p.duration?p.elapsed:p.duration;
+    const left=42,right=635,top=18,bottom=226;
+    const maxV=Math.max(...vals.slice(0,n))*1.25;
+    const maxN=Math.max(...news.slice(0,n))*1.35;
+    const xStep=(right-left)/Math.max(1,n);
+    for(let i=0;i<=3;i++){
+      const yy=top+(bottom-top)*i/3;
+      svgEl.append(svg("line",{x1:left,y1:yy,x2:right,y2:yy,class:"gridline"}));
+      svgEl.append(svg("text",{x:left-7,y:yy+3,"text-anchor":"end",class:"axis"},
+        String(Math.round(maxV*(1-i/3)))));
+      svgEl.append(svg("text",{x:right+7,y:yy+3,"text-anchor":"start",class:"axis"},
+        String(Math.round(maxN*(1-i/3)))));
+    }
+    vals.slice(0,n).forEach((v,i)=>{
+      const barW=Math.min(24,xStep*.48);
+      const height=v/maxV*(bottom-top);
+      svgEl.append(svg("rect",{x:left+i*xStep+(xStep-barW)/2,y:bottom-height,
+        width:barW,height,rx:3,class:"bar-vds"}));
+      svgEl.append(svg("text",{x:left+i*xStep+xStep/2,y:bottom+16,
+        "text-anchor":"middle",class:"axis"},String(i+1)));
+    });
+    const points=news.slice(0,n).map((v,i)=>[
+      left+i*xStep+xStep/2,bottom-v/maxN*(bottom-top)]);
+    if(points.length){
+      svgEl.append(svg("path",{d:points.map((pt,i)=>
+        `${i?"L":"M"}${pt[0]},${pt[1]}`).join(" "),class:"line-new"}));
+      points.forEach(([cx,cy])=>svgEl.append(svg("circle",{cx,cy,r:3.5,class:"dot-new"})));
+    }
+    svgEl.append(svg("text",{x:(left+right)/2,y:265,"text-anchor":"middle",class:"axis"},
+      "День акции"));
+    svgEl.append(svg("text",{x:left,y:11,class:"axis"},"VDS"));
+    svgEl.append(svg("text",{x:right,y:11,"text-anchor":"end",class:"axis"},"Новые клиенты"));
+  }
+
+  function renderShare(p) {
+    const comparison = data.filter(x => x.id!==p.id);
+    $("compareList").innerHTML = comparison.map(x=>
+      `<span class="chip selected" title="В макете выбраны для сравнения">${x.name} ✓</span>`
+    ).join("");
+    const rows=[p,...comparison];
+    $("shareTable").innerHTML=rows.map(x=>`
+      <tr><td>${x.name}${x.id===p.id?" · выбрана":""}</td>
+      <td>${x.newClients} / ${x.allBuyers}</td>
+      <td><strong>${pct(share(x))}</strong></td></tr>`).join("");
+
+    const chart=$("shareChart");
+    chart.replaceChildren();
+    chart.setAttribute("viewBox","0 0 520 177");
+    const left=118,right=485,top=12,rowH=34;
+    [0,.25,.5,.75,1].forEach(v=>{
+      const xx=left+v*(right-left);
+      chart.append(svg("line",{x1:xx,y1:top-2,x2:xx,y2:top+rowH*rows.length-4,class:"gridline"}));
+      chart.append(svg("text",{x:xx,y:top+rowH*rows.length+12,
+        "text-anchor":"middle",class:"axis"},`${Math.round(v*100)}%`));
+    });
+    rows.forEach((x,i)=>{
+      const yy=top+i*rowH;
+      chart.append(svg("text",{x:left-8,y:yy+14,"text-anchor":"end",class:"axis"},x.name));
+      chart.append(svg("rect",{x:left,y:yy,width:right-left,height:15,rx:4,fill:"#eef1f6"}));
+      chart.append(svg("rect",{x:left,y:yy,width:(right-left)*share(x),height:15,rx:4,
+        fill:x.id===p.id?"#315cf5":"#91a0bc"}));
+      chart.append(svg("text",{x:Math.min(right-2,left+(right-left)*share(x)+7),
+        y:yy+12,class:"axis"},pct(share(x))));
+    });
+  }
+
+  function renderSLTV(p) {
+    const remaining=Math.max(0,180-p.elapsed);
+    const status=p.elapsed>=180?"Горизонт созрел: показатель должен быть фактическим.":
+      `Когорта наблюдается ${p.elapsed} дней; до 180-дневного горизонта остаётся около ${remaining} дней.`;
+    $("sltvNote").innerHTML=`<strong>${status}</strong><br>
+      Макет показывает условный прогноз остатка. В рабочем дашборде его следует обучать
+      и проверять на исторических когортных кривых; если данных недостаточно — показывать
+      «прогноз недоступен», а не подставлять точечную оценку. Диапазон неопределённости
+      можно добавить после проверки качества модели.`;
+  }
+
+  function render() {
+    const p=byId($("promo").value);
+    renderStatus(p);
+    renderKpis(p);
+    renderDaily(p);
+    renderShare(p);
+    renderSLTV(p);
+  }
+  $("promo").addEventListener("change",render);
+  $("dateMode").addEventListener("change",e=>{
+    if(e.target.value==="all")
+      alert("Ручной выбор дат — место для будущего календарного фильтра в Superset.");
+  });
+  $("compareMode").addEventListener("change",e=>{
+    alert(e.target.value==="season"
+      ? "В рабочей версии список акций будет ограничен выбранным сезоном."
+      : "В макете для сравнения выбраны все демонстрационные акции.");
+  });
+  render();
+</script>
+</body>
+</html>
+
+							<script>
+                            	
+							</script>
+                        </body>
+                        </html>
+                    
